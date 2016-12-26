@@ -1,7 +1,7 @@
 package com.devon.demo.model;
 import java.io.Serializable;
 
-public class InventoryResponse {
+public class InventoryResponse implements Serializable {
 
   private String orderId;
   private int returnCode;

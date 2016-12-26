@@ -11,24 +11,23 @@ import org.springframework.jms.core.JmsTemplate;
 import org.springframework.jms.core.MessageCreator;
 import org.springframework.stereotype.Component;
 
-import com.devon.demo.model.Order;
+import com.devon.demo.model.InventoryResponse;
 
 @Component
-public class MessageSender {
-
+public class MessageSender2 {
 	@Autowired
-	@Qualifier("jmsTemplate1")
+	@Qualifier("jmsTemplate2")
+
 	JmsTemplate jmsTemplate;
 
-	public void sendMessage(final Order order) {
+	public void sendMessage(final InventoryResponse inventoryResponse) {
 
 		jmsTemplate.send(new MessageCreator() {
 			@Override
 			public Message createMessage(Session session) throws JMSException {
-				ObjectMessage objectMessage = session.createObjectMessage(order);
+				ObjectMessage objectMessage = session.createObjectMessage(inventoryResponse);
 				return objectMessage;
 			}
 		});
 	}
-
 }
