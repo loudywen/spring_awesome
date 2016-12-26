@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Product Order Form</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<link
+	href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.7/css/bootstrap.min.css"
+	th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}"
+	rel="stylesheet" media="screen" />
+
+<script
+	src="http://cdn.jsdelivr.net/webjars/jquery/3.1.1-1/jquery.min.js"
+	th:src="@{/webjars/jquery/3.1.1-1/jquery.min.js}"></script>
+</head>
+<body>
+	<div class="container">
+		<h1>Form</h1>
+		<form action="#" th:action="@{/newOrder}" th:object="${order}" method="post">
+			<div class="form-group">
+				<label for="productName">Product Name</label> <input
+					type="text" th:field="*{productName}" class="form-control" id="productName"
+					placeholder="Product Name" />
+			</div>
+			<div class="form-group">
+				<label for="quantity">Quantity</label> <input
+					type="text" th:field="*{quantity}" class="form-control" id="quantity"
+					placeholder="Quantity" />
+			</div>
+			<button type="submit" class="btn btn-default">Submit</button>
+		</form>
+
+	</div>
+
+</body>
+</html>

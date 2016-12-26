@@ -2,7 +2,7 @@ package com.devon.demo.model;
 
 import java.io.Serializable;
 
-public class Order implements Serializable {
+public class Order {
 
   private String orderId;
 

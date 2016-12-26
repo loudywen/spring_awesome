@@ -1,0 +1,27 @@
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Order Confirmation Page</title>
+<link
+	href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.7/css/bootstrap.min.css"
+	th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}"
+	rel="stylesheet" media="screen" />
+
+<script
+	src="http://cdn.jsdelivr.net/webjars/jquery/3.1.1-1/jquery.min.js"
+	th:src="@{/webjars/jquery/3.1.1-1/jquery.min.js}"></script>
+</head>
+<body>
+	<div class="container">
+		<div class="alert alert-success lead" th:text="${success}"></div>
+
+		<span class="well floatRight"> <a href="/newOrder">Buy More</a>
+		</span> <span class="well floatRight"> <a href="/checkStatus">Check
+				Status</a>
+		</span>
+
+	</div>
+</body>
+
+</html>
