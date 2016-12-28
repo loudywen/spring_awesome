@@ -8,7 +8,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 
 
 @SpringBootApplication
-//@EnableWebMvc
 public class SpringAwesomeApplication extends WebMvcConfigurerAdapter {
 
     public static void main(String[] args) {

@@ -7,13 +7,16 @@ import javax.jms.Session;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Conditional;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.jms.core.MessageCreator;
 import org.springframework.stereotype.Component;
 
+import com.devon.demo.config.MessageConfiguration;
 import com.devon.demo.model.Order;
 
 @Component
+@Conditional(MessageConfiguration.class)
 public class MessageSender {
 
 	@Autowired

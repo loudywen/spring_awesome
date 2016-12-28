@@ -6,17 +6,21 @@ import javax.jms.JMSException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Conditional;
 import org.springframework.jms.annotation.JmsListener;
 import org.springframework.messaging.Message;
 import org.springframework.messaging.MessageHeaders;
 import org.springframework.stereotype.Component;
 
+import com.devon.demo.config.MessageConfiguration;
 import com.devon.demo.model.InventoryResponse;
 import com.devon.demo.model.Order;
 import com.devon.demo.service.OrderInventoryService;
 import com.devon.demo.service.OrderService;
 
 @Component
+@Conditional(MessageConfiguration.class)
+
 public class MessageReceiver {
 	static final Logger			LOG						=
 			LoggerFactory.getLogger(MessageReceiver.class);

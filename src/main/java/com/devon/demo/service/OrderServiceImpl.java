@@ -5,8 +5,10 @@ import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Conditional;
 import org.springframework.stereotype.Service;
 
+import com.devon.demo.config.MessageConfiguration;
 import com.devon.demo.messaging.MessageSender;
 import com.devon.demo.model.InventoryResponse;
 import com.devon.demo.model.Order;
@@ -14,6 +16,7 @@ import com.devon.demo.model.OrderStatus;
 import com.devon.demo.util.BasicUtil;
 
 @Service("orderService")
+@Conditional(MessageConfiguration.class)
 public class OrderServiceImpl implements OrderService {
 
 	private static final Logger	LOG	= LoggerFactory.getLogger(OrderServiceImpl.class);

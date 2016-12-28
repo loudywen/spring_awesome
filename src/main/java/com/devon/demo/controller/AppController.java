@@ -1,9 +1,11 @@
 package com.devon.demo.controller;
 
+import com.devon.demo.config.MessageConfiguration;
 import com.devon.demo.model.Order;
 import com.devon.demo.service.OrderService;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Conditional;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
+@Conditional(MessageConfiguration.class)
 public class AppController {
 
 	@Autowired
