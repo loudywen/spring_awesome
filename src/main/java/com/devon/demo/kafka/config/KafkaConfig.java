@@ -6,7 +6,11 @@ import java.util.Map;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Condition;
+import org.springframework.context.annotation.ConditionContext;
+import org.springframework.context.annotation.Conditional;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.type.AnnotatedTypeMetadata;
 import org.springframework.kafka.annotation.EnableKafka;
 import org.springframework.kafka.config.ConcurrentKafkaListenerContainerFactory;
 import org.springframework.kafka.core.ConsumerFactory;
@@ -17,7 +21,8 @@ import org.springframework.kafka.core.ProducerFactory;
 
 @Configuration
 @EnableKafka
-public class KafkaConfig {
+@Conditional(KafkaConfig.class)
+public class KafkaConfig implements Condition {
 	@Bean
 	ConcurrentKafkaListenerContainerFactory<Integer, String> kafkaListenerContainerFactory() {
 		ConcurrentKafkaListenerContainerFactory<Integer, String> factory =
@@ -75,5 +80,11 @@ public class KafkaConfig {
 	@Bean
 	public KafkaTemplate<Integer, String> kafkaTemplate() {
 		return new KafkaTemplate<Integer, String>(producerFactory());
+	}
+
+	@Override
+	public boolean matches(ConditionContext arg0, AnnotatedTypeMetadata arg1) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 }
