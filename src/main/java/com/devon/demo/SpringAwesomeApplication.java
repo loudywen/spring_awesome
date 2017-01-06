@@ -1,15 +1,19 @@
 package com.devon.demo;
 
+import com.ryantenney.metrics.spring.config.annotation.EnableMetrics;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 
 @SpringBootApplication
+@EnableAsync
+@EnableMetrics
 @ComponentScan({"com.devon.demo.*"})
-public class SpringAwesomeApplication extends WebMvcConfigurerAdapter {
+public class SpringAwesomeApplication extends WebMvcConfigurerAdapter   {
 
     public static void main(String[] args) {
     SpringApplication.run(SpringAwesomeApplication.class, args);
@@ -21,4 +25,6 @@ public class SpringAwesomeApplication extends WebMvcConfigurerAdapter {
 		   registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
            registry.addResourceHandler("/webjars/**").addResourceLocations("classpath:/META-INF/resources/webjars/");
 	}
+
+
 }
