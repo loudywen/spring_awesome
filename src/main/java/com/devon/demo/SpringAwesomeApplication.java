@@ -1,5 +1,6 @@
 package com.devon.demo;
 
+import com.devon.demo.metrics.MetricsReporterConfig;
 import com.ryantenney.metrics.spring.config.annotation.EnableMetrics;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -13,18 +14,19 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 @EnableAsync
 @EnableMetrics
 @ComponentScan({"com.devon.demo.*"})
-public class SpringAwesomeApplication extends WebMvcConfigurerAdapter   {
+public class SpringAwesomeApplication extends WebMvcConfigurerAdapter {
 
     public static void main(String[] args) {
-    SpringApplication.run(SpringAwesomeApplication.class, args);
-  }
+        MetricsReporterConfig.setReporter(com.devon.demo.metrics.Reporter.NULL);
+        SpringApplication.run(SpringAwesomeApplication.class, args);
+    }
 
     // This is used to load css and js that kind of stuff
-	@Override
-	public void addResourceHandlers(ResourceHandlerRegistry registry) {
-		   registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
-           registry.addResourceHandler("/webjars/**").addResourceLocations("classpath:/META-INF/resources/webjars/");
-	}
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
+        registry.addResourceHandler("/webjars/**").addResourceLocations("classpath:/META-INF/resources/webjars/");
+    }
 
 
 }

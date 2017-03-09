@@ -45,6 +45,7 @@ public class KafkaConfig implements Condition {
 	@Bean
 	public Map<String, Object> consumerConfigs() {
 		Map<String, Object> props = new HashMap<>();
+<<<<<<< Updated upstream
 		props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, env.getProperty("kafka.bootstrap.servers"));
 		props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, org.apache.kafka.common.serialization.IntegerDeserializer.class);
 		props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, org.apache.kafka.common.serialization.StringDeserializer.class);
@@ -53,12 +54,25 @@ public class KafkaConfig implements Condition {
 		props.put(ConsumerConfig.AUTO_COMMIT_INTERVAL_MS_CONFIG, env.getProperty("kafka.auto.commit.interval.ms"));
 		props.put(ConsumerConfig.SESSION_TIMEOUT_MS_CONFIG, env.getProperty("kafka.session.timeout.ms"));
 		return props;
+=======
+		props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "172.16.143.138:9092");
+		props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG,
+				org.apache.kafka.common.serialization.IntegerDeserializer.class);
+		props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG,
+				org.apache.kafka.common.serialization.StringDeserializer.class);
+		props.put(ConsumerConfig.GROUP_ID_CONFIG, "devon_kafka_consumer");
+		props.put(ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, true);
+		props.put(ConsumerConfig.AUTO_COMMIT_INTERVAL_MS_CONFIG, "100");
+		props.put(ConsumerConfig.SESSION_TIMEOUT_MS_CONFIG, "15000");
+
+        return props;
+>>>>>>> Stashed changes
 	}
 
-	@Bean
+	/*@Bean
 	public Listener listener() {
 		return new Listener();
-	}
+	}*/
 
 	@Bean
 	public ProducerFactory<Integer, String> producerFactory() {
@@ -68,6 +82,7 @@ public class KafkaConfig implements Condition {
 	@Bean
 	public Map<String, Object> producerConfigs() {
 		Map<String, Object> props = new HashMap<>();
+<<<<<<< Updated upstream
 		props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, env.getProperty("kafka.bootstrap.servers"));
 		props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, org.apache.kafka.common.serialization.IntegerSerializer.class);
 		props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, org.apache.kafka.common.serialization.StringSerializer.class);
@@ -76,6 +91,19 @@ public class KafkaConfig implements Condition {
 		props.put(ProducerConfig.LINGER_MS_CONFIG, Integer.parseInt(env.getProperty("kafka.linger.ms")));
 		props.put(ProducerConfig.BUFFER_MEMORY_CONFIG, Integer.parseInt(env.getProperty("kafka.buffer.memory")));
 		props.put(ProducerConfig.CLIENT_ID_CONFIG, env.getProperty("kafka.producer.client.id"));
+=======
+		props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "172.16.143.138:9092");
+		props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG,
+				org.apache.kafka.common.serialization.IntegerSerializer.class);
+		props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG,
+				org.apache.kafka.common.serialization.StringSerializer.class);
+		props.put(ProducerConfig.RETRIES_CONFIG, 0);
+		props.put(ProducerConfig.BATCH_SIZE_CONFIG, 16384);
+		props.put(ProducerConfig.LINGER_MS_CONFIG, 1);
+		props.put(ProducerConfig.BUFFER_MEMORY_CONFIG, 33554432);
+		props.put(ProducerConfig.CLIENT_ID_CONFIG, "devon_kafka_producer");
+		props.put(ProducerConfig.COMPRESSION_TYPE_CONFIG,"lz4");
+>>>>>>> Stashed changes
 		return props;
 	}
 

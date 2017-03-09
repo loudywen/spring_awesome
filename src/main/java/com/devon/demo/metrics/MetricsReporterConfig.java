@@ -91,6 +91,8 @@ public class MetricsReporterConfig extends MetricsConfigurerAdapter {
 				        ConsoleReporter.forRegistry(metricRegistry1).convertRatesTo(TimeUnit.SECONDS)
 				                .convertDurationsTo(TimeUnit.MILLISECONDS).build()).start(CONFIGURATION_REPORT_TIME, TimeUnit.SECONDS);
 				break;
+			case NULL:
+				break;
 		}
 		
 	}

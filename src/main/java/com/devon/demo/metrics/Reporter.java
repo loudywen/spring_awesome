@@ -8,5 +8,5 @@ package com.devon.demo.metrics;
 * @since 23 November,2016
 */
 public enum Reporter {
-	CSV, CONSOLE, GRAPHITE
+	CSV, CONSOLE, GRAPHITE,NULL
 }
